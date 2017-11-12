@@ -3,3 +3,7 @@ C:\Users\DENIS\Desktop\Немного прог\2 курс\ЯиСП\Новая п
 C:\Users\DENIS\Desktop\Немного прог\2 курс\ЯиСП\Новая папка (2)\Aquarium2\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
 C:\Users\DENIS\Desktop\Немного прог\2 курс\ЯиСП\Новая папка (2)\Aquarium2\BL\obj\Debug\BL.dll
 C:\Users\DENIS\Desktop\Немного прог\2 курс\ЯиСП\Новая папка (2)\Aquarium2\BL\obj\Debug\BL.pdb
+C:\Users\Илюха\Desktop\Программирование\2 курс\ЯиСП\2 аттестация\AquaMAN\Aquarium2\BL\bin\Debug\BL.dll
+C:\Users\Илюха\Desktop\Программирование\2 курс\ЯиСП\2 аттестация\AquaMAN\Aquarium2\BL\bin\Debug\BL.pdb
+C:\Users\Илюха\Desktop\Программирование\2 курс\ЯиСП\2 аттестация\AquaMAN\Aquarium2\BL\obj\Debug\BL.dll
+C:\Users\Илюха\Desktop\Программирование\2 курс\ЯиСП\2 аттестация\AquaMAN\Aquarium2\BL\obj\Debug\BL.pdb

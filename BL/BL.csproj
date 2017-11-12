@@ -41,12 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Creator.cs" />
-    <Compile Include="Fish.cs" />
-    <Compile Include="FishAdult.cs" />
-    <Compile Include="FishAdultCreator.cs" />
-    <Compile Include="FishChild.cs" />
-    <Compile Include="FishChildCreator.cs" />
+    <Compile Include="Aquarium.cs" />
+    <Compile Include="Drawing.cs" />
+    <Compile Include="Creators\ICreator.cs" />
+    <Compile Include="Fish\Fish.cs" />
+    <Compile Include="Fish\FishAdult.cs" />
+    <Compile Include="Creators\FishAdultCreator.cs" />
+    <Compile Include="Fish\FishChild.cs" />
+    <Compile Include="Creators\FishChildCreator.cs" />
+    <Compile Include="ListOfAquaPeople.cs" />
+    <Compile Include="LiveInAqua.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
