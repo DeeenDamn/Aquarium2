@@ -1,0 +1,5 @@
+C:\Users\DENIS\Desktop\Немного прог\2 курс\ЯиСП\Новая папка (2)\Aquarium2\BL\bin\Debug\BL.dll
+C:\Users\DENIS\Desktop\Немного прог\2 курс\ЯиСП\Новая папка (2)\Aquarium2\BL\bin\Debug\BL.pdb
+C:\Users\DENIS\Desktop\Немного прог\2 курс\ЯиСП\Новая папка (2)\Aquarium2\BL\obj\Debug\BL.csprojResolveAssemblyReference.cache
+C:\Users\DENIS\Desktop\Немного прог\2 курс\ЯиСП\Новая папка (2)\Aquarium2\BL\obj\Debug\BL.dll
+C:\Users\DENIS\Desktop\Немного прог\2 курс\ЯиСП\Новая папка (2)\Aquarium2\BL\obj\Debug\BL.pdb

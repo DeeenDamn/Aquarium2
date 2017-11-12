@@ -1,0 +1,2 @@
+C:\Users\DENIS\Desktop\Немного прог\2 курс\ЯиСП\Новая папка (2)\Aquarium\Aquarium\bin\Debug\Aquarium.exe.config
+C:\Users\DENIS\Desktop\Немного прог\2 курс\ЯиСП\Новая папка (2)\Aquarium2\Aquarium\bin\Debug\Aquarium.exe.config
