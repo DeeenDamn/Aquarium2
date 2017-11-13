@@ -7,13 +7,16 @@ using System.Drawing;
 
 namespace BL
 {
-    public abstract class Fish : LiveInAqua
+    public class Snail : LiveInAqua, ICreator
     {
-
-        public void Create()
+        public void Create(Graphics g, int x, int y)
         {
-            creator.Create(g, x, y);
+            
         }
-      
+        public void Action()
+        {
+
+        }
+
     }
 }

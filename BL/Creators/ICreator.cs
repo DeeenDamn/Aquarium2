@@ -10,5 +10,6 @@ namespace BL
     public interface ICreator
     {
         void Create(Graphics g, int x, int y);
+        void Action();
     }
 }
