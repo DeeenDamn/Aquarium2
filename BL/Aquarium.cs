@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-    public class Aquarium : LiveInAqua
+    public class Aquarium //: LiveInAqua он точно должен наследоваться от какого-либо класса?
     {
         public int WorldWidth { get; set; }
         public int WorldHeight { get; set; }

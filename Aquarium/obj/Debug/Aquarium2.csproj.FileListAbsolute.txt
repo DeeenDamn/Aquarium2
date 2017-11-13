@@ -29,3 +29,5 @@ C:\Users\mariy\Desktop\Аквариум 2\Aquarium2\Aquarium\obj\Debug\Aquarium2
 C:\Users\mariy\Desktop\Аквариум 2\Aquarium2\Aquarium\obj\Debug\Aquarium2.Form1.resources
 C:\Users\mariy\Desktop\Аквариум 2\Aquarium2\Aquarium\obj\Debug\Aquarium.Properties.Resources.resources
 C:\Users\mariy\Desktop\Аквариум 2\Aquarium2\Aquarium\obj\Debug\Aquarium2.csproj.GenerateResource.Cache
+C:\Users\DENIS\Desktop\Немного прог\2 курс\ЯиСП\Новая папка (2)\Aquarium2\Aquarium\bin\Debug\BL.dll
+C:\Users\DENIS\Desktop\Немного прог\2 курс\ЯиСП\Новая папка (2)\Aquarium2\Aquarium\bin\Debug\BL.pdb

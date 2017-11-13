@@ -18,5 +18,10 @@ namespace BL
 
         }
 
+        public override void Move()
+        {
+            
+        }
+
     }
 }
