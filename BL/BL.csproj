@@ -45,7 +45,6 @@
     <Compile Include="Aquarium.cs" />
     <Compile Include="Drawing.cs" />
     <Compile Include="Creators\ICreator.cs" />
-    <Compile Include="Fish\Fish.cs" />
     <Compile Include="Fish\FishAdult.cs" />
     <Compile Include="Creators\FishAdultCreator.cs" />
     <Compile Include="Fish\FishChild.cs" />

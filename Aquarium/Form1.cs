@@ -24,23 +24,29 @@ namespace Aquarium2
         static Bitmap bmp;// = new Bitmap(Image.FromFile("background.png"));
         //static Graphics g = Graphics.FromHwnd()//Graphics.FromImage(bmp);
         int x, y;
+        int bigFISH = 0;
 
 
         private void рыбуToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fishFlag = true;
+            bigFISH++;
+            рыбуToolStripMenuItem.Text = "Рыбу " + bigFISH.ToString() + "/3";
+            if (bigFISH == 3)
+            {
+                рыбуToolStripMenuItem.Text = "Больше нельзя ;(";
+                рыбуToolStripMenuItem.Enabled = false;
+            }
+            if (bigFISH == 1)
+                timer2.Enabled = true;
         }
         private void Form1_Click(object sender, EventArgs e)
         {
-
             if (fishFlag)
             {
                 x = MousePosition.X;
                 y = MousePosition.Y;
-                //bmp = new Bitmap(Width, Height);
-                //g = Graphics.FromImage(bmp);
                 g.DrawImage(Image.FromFile("background.png"), 0, 0);
-                //Graphics g = Graphics.FromHwnd(Handle);
                 swimmers.Add(new FishAdult(g, MousePosition.X, MousePosition.Y));
                 BackgroundImage = bmp;
                 fishFlag = false;
@@ -55,6 +61,14 @@ namespace Aquarium2
             BackgroundImage = bmp;
             swimmers = new ListOfAquaPeople();
             timer1.Enabled = true;
+            включитьАквариумToolStripMenuItem.Enabled = false;
+            добавитьРыбуToolStripMenuItem.Enabled = true;
+
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            swimmers.SlowDie();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

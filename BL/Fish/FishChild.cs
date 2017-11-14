@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace BL
 {
-    public class FishChild : LiveInAqua //Fish
+    public class FishChild : LiveInAqua
     {
         public FishChild(int x, int y, Graphics g)
         {
@@ -17,6 +17,7 @@ namespace BL
             Y = y;
             this.g = g;
         }
+
 
         public override void Move()
         {

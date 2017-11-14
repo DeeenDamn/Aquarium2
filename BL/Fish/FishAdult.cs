@@ -9,11 +9,7 @@ namespace BL
 {
     public class FishAdult : LiveInAqua //Fish
     {
-        int rightcount = 0;
-        int leftcount = 0;
-        int upcount = 0;
-        int downcount = 0;
-        Random rnd = new Random();
+
         public FishAdult(Graphics g, int x, int y)
         {
             creator = new FishAdultCreator();
@@ -21,51 +17,37 @@ namespace BL
             X = x;
             Y = y;
             this.g = g;
-            
+            TrgX = rnd.Next(80, 1450);
+            TrgY = rnd.Next(40, 580);
+            lifeRec = new Rectangle(x - 75, y + 50, 152, 10);
         }
 
         public override void Move()
         {
-            int a = rnd.Next(0, 2);
-            if (X < 1450 && X > 80)
+            int dx = TrgX - x;
+            int dy = TrgY - y;
+            int stepX = 10;
+            int stepY = 5;
+
+            if (Math.Abs(dx) > 3)
             {
-                if (a == 0)
+                if (dx < 0)              // рыбка правее точки
+                    x -= stepX;
+                else
                 {
+                    x += stepX;
                     turn = true;
-                    X += 25;
                 }
-                else
-                    X -= 25;
             }
-            else
+
+            if (Math.Abs(dy) > 1)
             {
-                if (X < 1450)
-                {
-                    turn = true;
-                    X += 30;
-                }
+                if (dy < 0)                // рыбка ниже точки
+                    y -= stepY;
                 else
-                    X -= 30;
+                    y += stepY;
             }
-            a = rnd.Next(0, 2);
-            if (Y < 580 && Y > 40)
-            {
-                if (a == 0 )
-                {
-                    Y += 20;
-                }
-               else
-                {
-                    Y -= 20;
-                }
-            }
-            else
-            {
-                if (Y < 580)
-                    Y += 25;
-                else
-                    Y -= 25;
-            }
-        }       
+            lifeRec = new Rectangle(x - 75, y + 50, 152, 10);
+        }
     }
 }
