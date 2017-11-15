@@ -23,5 +23,10 @@ namespace BL
             
         }
 
+        public override void Die()
+        {
+            
+        }
+
     }
 }

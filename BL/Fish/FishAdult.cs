@@ -7,19 +7,21 @@ using System.Drawing;
 
 namespace BL
 {
-    public class FishAdult : LiveInAqua //Fish
+    public class FishAdult : LiveInAqua, ISubscriber 
     {
 
         public FishAdult(Graphics g, int x, int y)
         {
             creator = new FishAdultCreator();
             creator.Create(g, x, y);
-            X = x;
-            Y = y;
+            X = x - 75;
+            Y = y - 47;
+            Width = 150;
+            Height = 95;
             this.g = g;
             TrgX = rnd.Next(80, 1450);
             TrgY = rnd.Next(40, 580);
-            lifeRec = new Rectangle(x - 75, y + 50, 152, 10);
+            lifeRec = new Rectangle(x, y + 100, Width, 10);
         }
 
         public override void Move()
@@ -47,7 +49,13 @@ namespace BL
                 else
                     y += stepY;
             }
-            lifeRec = new Rectangle(x - 75, y + 50, 152, 10);
+            lifeRec.X = X;
+            lifeRec.Y = Y + 100;
+        }
+
+        public void Update()
+        {
+            
         }
     }
 }

@@ -11,19 +11,30 @@ namespace BL
     {
         protected int x;
         protected int y;
+        protected int width;
+        protected int height;
+        public bool Death { get; protected set; } = false;
 
         public int TrgX { get; protected set; }
         public int TrgY { get; protected set; }
+
+        public int Width
+        {
+            get { return width; }
+            set { width = value; }
+        }
+
+        public int Height
+        {
+            get { return height; }
+            set { height = value; }
+        }
 
         public int health = 100;
         public Rectangle lifeRec;
         public bool turn = false;
         protected Graphics g;
         protected Random rnd = new Random();
-
-        //protected Bitmap bmp;
-
-
         public ICreator creator;
 
         public int X
@@ -51,5 +62,15 @@ namespace BL
             TrgX = rnd.Next(80, 1450);
             TrgY = rnd.Next(40, 580);
         }
+
+        public virtual void Die()
+        {
+            if (Y > 25)
+                Y -= 7;
+            else
+                Death = true;
+        }
+        
+
     }
 }

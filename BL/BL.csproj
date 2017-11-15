@@ -49,6 +49,7 @@
     <Compile Include="Creators\FishAdultCreator.cs" />
     <Compile Include="Fish\FishChild.cs" />
     <Compile Include="Creators\FishChildCreator.cs" />
+    <Compile Include="ISubscriber.cs" />
     <Compile Include="ListOfAquaPeople.cs" />
     <Compile Include="LiveInAqua.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

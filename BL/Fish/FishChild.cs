@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace BL
 {
-    public class FishChild : LiveInAqua
+    public class FishChild : LiveInAqua, ISubscriber
     {
         public FishChild(int x, int y, Graphics g)
         {
@@ -35,6 +35,11 @@ namespace BL
                 if (Y > 40)
                     Y -= 10;
             }
+        }
+
+        public void Update()
+        {
+
         }
     }
 }

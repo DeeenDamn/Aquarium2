@@ -29,11 +29,20 @@ namespace BL
             {
                 for (int i = 0; i < residents.Count; i++)
                 {
-                    if(PointNewOrNo(residents.ElementAt(i).X, residents.ElementAt(i).Y, residents.ElementAt(i).TrgX, residents.ElementAt(i).TrgY))
+                    if (residents.ElementAt(i).health == 0)
                     {
-                        residents.ElementAt(i).SetPoint();
+                        residents.ElementAt(i).Die();
                     }
-                    residents.ElementAt(i).Move();
+                    else
+                    {
+                        if (PointNewOrNo(residents.ElementAt(i).X, residents.ElementAt(i).Y, residents.ElementAt(i).TrgX, residents.ElementAt(i).TrgY))
+                        {
+                            residents.ElementAt(i).SetPoint();
+                        }
+
+                        residents.ElementAt(i).Move();
+                    }
+
                 }
                 bmp = draw.DrawMove(residents);
             }  
@@ -51,14 +60,14 @@ namespace BL
                 return true;
             else
                 return false;
-                //return (Math.Abs(trgX - x) < 156 || Math.Abs(trgY - y) < 133) ? true : false;
         }
 
         public void SlowDie()
         {
             foreach (LiveInAqua f in residents)
             {
-                f.health -= 1;
+                if (f.health > 0)
+                    f.health -= 1;
             }
         }
     }
