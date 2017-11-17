@@ -17,12 +17,12 @@ namespace Aquarium2
         {
             InitializeComponent();
         }
+        Aquarium world;
+        Drawing draw;
 
-        ListOfAquaPeople swimmers;
-        bool fishFlag;
+        bool fishFlag,foodFlag;
         Graphics g;
-        static Bitmap bmp;// = new Bitmap(Image.FromFile("background.png"));
-        //static Graphics g = Graphics.FromHwnd()//Graphics.FromImage(bmp);
+        static Bitmap bmp;
         int x, y;
         int bigFISH = 0;
 
@@ -42,39 +42,47 @@ namespace Aquarium2
         }
         private void Form1_Click(object sender, EventArgs e)
         {
-            if (fishFlag)
+            x = MousePosition.X;
+            y = MousePosition.Y;
+            if (!fishFlag && foodFlag)
             {
-                x = MousePosition.X;
-                y = MousePosition.Y;
+                world.CreateFood(x, y);
+            }
+            if (fishFlag)
+            {   
                 g.DrawImage(Image.FromFile("background.png"), 0, 0);
-                swimmers.Add(new FishAdult(g, MousePosition.X, MousePosition.Y));
+                world.Add(new FishAdult(g, MousePosition.X, MousePosition.Y));
                 BackgroundImage = bmp;
                 fishFlag = false;
             }
+            
         }
 
         private void включитьАквариумToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            foodFlag = true;
             bmp = new Bitmap(Width, Height);
             g = Graphics.FromImage(bmp);
             g.DrawImage(Image.FromFile("background.png"), 0, 0);
             BackgroundImage = bmp;
-            swimmers = new ListOfAquaPeople();
+            world = new Aquarium();
             timer1.Enabled = true;
             включитьАквариумToolStripMenuItem.Enabled = false;
             добавитьРыбуToolStripMenuItem.Enabled = true;
+            draw = new Drawing();
 
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            swimmers.SlowDie();
+            world.AllFish.SlowDie();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            swimmers.Move();
-            BackgroundImage = swimmers.BM();
+            world.AllFish.Move();
+            world.FallFood();
+            BackgroundImage = draw.DrawAll(world);
         }
     }
 }

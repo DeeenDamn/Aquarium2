@@ -6,26 +6,26 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-    public class Aquarium //: LiveInAqua он точно должен наследоваться от какого-либо класса?
+    public class Aquarium// : ISubject 
     {
-        public int WorldWidth { get; set; }
-        public int WorldHeight { get; set; }
+        public ListOfAquaPeople AllFish { get; private set; } = new ListOfAquaPeople();
+        public List<Food> Ohapka { get; private set; } = new List<Food>();
 
-        public int BottomHeight { get; set; }
-
-
-        public bool Light { get; set; } // включен или выключен свет
-        public double Temperature { get; set; } // текущая температура
-        public double MinGoodTemperature { get; set; } // минимальная хорошая
-        public double MaxGoodTemperature { get; set; } // максимальная хорошая
-        public bool ComfortTemperature // является ли температура воды хорошей, влияет на аппетит рыб и активность
+        public void Add(LiveInAqua fish)
         {
-            get
-            {
-                return Temperature >= MinGoodTemperature && Temperature <= MaxGoodTemperature;
-            }
+            AllFish.Add(fish);
         }
 
+        public void CreateFood(int x, int y)
+        {
+            Ohapka.Add(new Food(x, y));
+        }
 
+        public void FallFood()
+        {
+            foreach (Food foo in Ohapka)
+                foreach (Food.Kroshka kr in foo.Korm)
+                    kr.Sink();
+        }
     }
 }

@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace BL
 {
-    public class FishAdult : LiveInAqua, ISubscriber 
+    public class FishAdult : LiveInAqua
     {
 
         public FishAdult(Graphics g, int x, int y)
@@ -52,6 +52,8 @@ namespace BL
             lifeRec.X = X;
             lifeRec.Y = Y + 100;
         }
+
+        public void GoEat() { }
 
         public void Update()
         {

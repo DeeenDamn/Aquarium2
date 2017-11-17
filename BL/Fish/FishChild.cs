@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace BL
 {
-    public class FishChild : LiveInAqua, ISubscriber
+    public class FishChild : LiveInAqua
     {
         public FishChild(int x, int y, Graphics g)
         {

@@ -70,6 +70,11 @@ namespace BL
             else
                 Death = true;
         }
+
+        public virtual void GoEat()
+        {
+              
+        }
         
 
     }

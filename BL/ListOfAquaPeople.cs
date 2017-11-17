@@ -12,6 +12,7 @@ namespace BL
         public List<LiveInAqua> residents;
         Drawing draw = new Drawing();
         Bitmap bmp;
+        Image mainBmp = Image.FromFile("background.png");
 
         public ListOfAquaPeople()
         {
@@ -44,10 +45,11 @@ namespace BL
                     }
 
                 }
-                bmp = draw.DrawMove(residents);
-            }  
-            else 
-                bmp = new Bitmap(Image.FromFile("background.png"));
+            }
+            //    bmp = draw.DrawAll();
+            //}
+            //else
+            //    bmp = new Bitmap(mainBmp);
         }
         public Bitmap BM()
         {
@@ -70,5 +72,31 @@ namespace BL
                     f.health -= 1;
             }
         }
+
+
+
+
+        List<LiveInAqua> subscribers = new List<LiveInAqua>();
+
+        public void IsHungry()
+        {
+            foreach (LiveInAqua fish in residents)
+            {
+                if (fish is FishAdult || fish is FishChild)
+                    subscribers.Add(fish);
+            }
+        }
+
+        public void RemoveObservers()
+        {
+            subscribers.Clear();
+        }
+
+        public void NotifyObserversFood()
+        {
+            foreach (LiveInAqua fish in subscribers)
+                fish.GoEat();
+        }
+
     }
 }

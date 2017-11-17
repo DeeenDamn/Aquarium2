@@ -26,46 +26,55 @@ namespace BL
             leftdie.RotateFlip(RotateFlipType.RotateNoneFlipXY);
         }
 
-        public Bitmap DrawMove(List<LiveInAqua> residents)
+        public Bitmap DrawAll(Aquarium sea)
         {
             bmp.Dispose();
             bmp = new Bitmap(back);
             g = Graphics.FromImage(bmp);
-            for (int i = 0; i < residents.Count; i++)
+            DrawMove(sea.AllFish);
+            if (sea.Ohapka.Count != 0)
+                DrawFood(sea.Ohapka);
+            return bmp;
+
+        }
+
+        private void DrawMove(ListOfAquaPeople swimmers)
+        {
+            
+            for (int i = 0; i < swimmers.residents.Count; i++)
             {
-                if (residents.ElementAt(i).Death)
+                if (swimmers.residents.ElementAt(i).Death)
                 {
-                    g.DrawImage(Image.FromFile("death.png"), residents.ElementAt(i).X, residents.ElementAt(i).Y, 150, 150);
-                    residents.RemoveAt(i);
+                    g.DrawImage(Image.FromFile("death.png"), swimmers.residents.ElementAt(i).X, swimmers.residents.ElementAt(i).Y, 150, 150);
+                    swimmers.residents.RemoveAt(i);
                     continue;                    
                 }
-                if (residents.ElementAt(i).turn)
+                if (swimmers.residents.ElementAt(i).turn)
                 {
-                    if (residents.ElementAt(i).health != 0)
+                    if (swimmers.residents.ElementAt(i).health != 0)
                     {
-                        g.DrawImage(rightfish, residents.ElementAt(i).X, residents.ElementAt(i).Y, residents.ElementAt(i).Width, residents.ElementAt(i).Height);
-                        residents.ElementAt(i).turn = false;
+                        g.DrawImage(rightfish, swimmers.residents.ElementAt(i).X, swimmers.residents.ElementAt(i).Y, swimmers.residents.ElementAt(i).Width, swimmers.residents.ElementAt(i).Height);
+                        swimmers.residents.ElementAt(i).turn = false;
                     }
                     else
                     {
-                        g.DrawImage(rightdie, residents.ElementAt(i).X, residents.ElementAt(i).Y, residents.ElementAt(i).Width, residents.ElementAt(i).Height);
+                        g.DrawImage(rightdie, swimmers.residents.ElementAt(i).X, swimmers.residents.ElementAt(i).Y, swimmers.residents.ElementAt(i).Width, swimmers.residents.ElementAt(i).Height);
                     }
 
                 }
                 else
                 {
-                    if (residents.ElementAt(i).health != 0)
+                    if (swimmers.residents.ElementAt(i).health != 0)
                     {
-                        g.DrawImage(leftfish, residents.ElementAt(i).X, residents.ElementAt(i).Y, 150, 95);
+                        g.DrawImage(leftfish, swimmers.residents.ElementAt(i).X, swimmers.residents.ElementAt(i).Y, 150, 95);
                     }
                     else
                     {
-                        g.DrawImage(leftdie, residents.ElementAt(i).X, residents.ElementAt(i).Y, residents.ElementAt(i).Width, residents.ElementAt(i).Height);
+                        g.DrawImage(leftdie, swimmers.residents.ElementAt(i).X, swimmers.residents.ElementAt(i).Y, swimmers.residents.ElementAt(i).Width, swimmers.residents.ElementAt(i).Height);
                     }
                 }
-                DrawHealth(residents.ElementAt(i).lifeRec, residents.ElementAt(i).health);
+                DrawHealth(swimmers.residents.ElementAt(i).lifeRec, swimmers.residents.ElementAt(i).health);
             }
-            return bmp;
         }
 
         private void DrawHealth(Rectangle rec, int health)
@@ -86,6 +95,13 @@ namespace BL
                 g.DrawRectangle(Pens.Black, rec);
                 g.DrawString(health.ToString(), myFont, Brushes.Black, rec.Location.X + rec.Size.Width / 2 - 10, rec.Location.Y - rec.Size.Height / 2);
             }
+        }
+
+        public void DrawFood(List<Food> eda)
+        {
+            foreach (Food food in eda)
+                foreach (Food.Kroshka kpoxa in food.Korm)
+                    g.DrawImage(Image.FromFile("kroshka.png"), kpoxa.x, kpoxa.y, 12, 12);
         }
     }
 }
