@@ -71,11 +71,25 @@ namespace BL
                 Death = true;
         }
 
-        public virtual void GoEat()
+        public virtual void GoEat(List<Food> Ohapka)
         {
-              
+            double min = 5000;
+            int indexI = -1, indexJ = -1;
+            double distance;
+            for (int i =0; i < Ohapka.Count(); i++)
+                for (int j = 0; j < Ohapka.ElementAt(i).Korm.Count(); j++)
+                {
+                    distance = Math.Sqrt((X - Ohapka.ElementAt(i).Korm.ElementAt(j).x) * (X - Ohapka.ElementAt(i).Korm.ElementAt(j).x)
+                        + (Y - Ohapka.ElementAt(i).Korm.ElementAt(j).y) * (Y - Ohapka.ElementAt(i).Korm.ElementAt(j).y));
+                    if (distance < min)
+                    {
+                        min = distance;
+                        indexI = i;
+                        indexJ = j;
+                    }
+                }
+            TrgX = Ohapka.ElementAt(indexI).Korm.ElementAt(indexJ).x;
+            TrgY = Ohapka.ElementAt(indexI).Korm.ElementAt(indexJ).y;
         }
-        
-
     }
 }

@@ -44,7 +44,7 @@ namespace Aquarium2
         {
             x = MousePosition.X;
             y = MousePosition.Y;
-            if (!fishFlag && foodFlag)
+            if (!fishFlag && foodFlag && y <= 630)
             {
                 world.CreateFood(x, y);
             }

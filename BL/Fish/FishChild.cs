@@ -36,10 +36,5 @@ namespace BL
                     Y -= 10;
             }
         }
-
-        public void Update()
-        {
-
-        }
     }
 }

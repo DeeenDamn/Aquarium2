@@ -22,7 +22,7 @@ namespace BL
 
             public void Sink()
             {
-                if (y <= 580)
+                if (y <= 650)
                     y += 5;
             }
         }

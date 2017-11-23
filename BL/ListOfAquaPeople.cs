@@ -10,8 +10,8 @@ namespace BL
     public class ListOfAquaPeople : LiveInAqua
     {
         public List<LiveInAqua> residents;
+        private List<Food> Ohapka;
         Drawing draw = new Drawing();
-        Bitmap bmp;
         Image mainBmp = Image.FromFile("background.png");
 
         public ListOfAquaPeople()
@@ -37,23 +37,15 @@ namespace BL
                     else
                     {
                         if (PointNewOrNo(residents.ElementAt(i).X, residents.ElementAt(i).Y, residents.ElementAt(i).TrgX, residents.ElementAt(i).TrgY))
-                        {
-                            residents.ElementAt(i).SetPoint();
-                        }
-
+                            {
+                                residents.ElementAt(i).SetPoint();                                
+                            }
+                        NotifyObserversFood(Ohapka);
                         residents.ElementAt(i).Move();
                     }
 
                 }
             }
-            //    bmp = draw.DrawAll();
-            //}
-            //else
-            //    bmp = new Bitmap(mainBmp);
-        }
-        public Bitmap BM()
-        {
-            return bmp;
         }
 
         private bool PointNewOrNo(int x, int y, int targetX, int targetY)
@@ -78,11 +70,16 @@ namespace BL
 
         List<LiveInAqua> subscribers = new List<LiveInAqua>();
 
+        public List<LiveInAqua> GetSubscribers()
+        {
+            return subscribers;
+        }
+
         public void IsHungry()
         {
             foreach (LiveInAqua fish in residents)
             {
-                if (fish is FishAdult || fish is FishChild)
+                if ((fish is FishAdult || fish is FishChild) && fish.health < 51)
                     subscribers.Add(fish);
             }
         }
@@ -92,10 +89,11 @@ namespace BL
             subscribers.Clear();
         }
 
-        public void NotifyObserversFood()
+        public void NotifyObserversFood(List<Food> Ohapka)
         {
+            this.Ohapka = Ohapka;
             foreach (LiveInAqua fish in subscribers)
-                fish.GoEat();
+                fish.GoEat(Ohapka);
         }
 
     }

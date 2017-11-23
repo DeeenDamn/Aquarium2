@@ -52,12 +52,5 @@ namespace BL
             lifeRec.X = X;
             lifeRec.Y = Y + 100;
         }
-
-        public void GoEat() { }
-
-        public void Update()
-        {
-            
-        }
     }
 }

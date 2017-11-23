@@ -27,5 +27,14 @@ namespace BL
                 foreach (Food.Kroshka kr in foo.Korm)
                     kr.Sink();
         }
+
+        public void FoodExist()
+        {
+            if (AllFish.GetSubscribers().Count() == 0)
+            {
+                AllFish.IsHungry();
+                AllFish.NotifyObserversFood(Ohapka);
+            }
+        }
     }
 }
