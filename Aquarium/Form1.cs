@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BL;
 
-namespace Aquarium2
+namespace Aquarium2 //починил
 {
     public partial class Form1 : Form
     {
