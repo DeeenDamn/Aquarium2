@@ -17,14 +17,15 @@ namespace Aquarium2
         {
             InitializeComponent();
         }
-        Aquarium world;
+        BL.Aquarium world;
         Drawing draw;
 
-        bool fishFlag,foodFlag;
+        bool fishFlag,foodFlag, snailFlag;
         Graphics g;
         static Bitmap bmp;
         int x, y;
         int bigFISH = 0;
+        int snail = 0;
 
 
         private void рыбуToolStripMenuItem_Click(object sender, EventArgs e)
@@ -51,10 +52,20 @@ namespace Aquarium2
             if (fishFlag)
             {   
                 g.DrawImage(Image.FromFile("background.png"), 0, 0);
-                world.Add(new FishAdult(g, MousePosition.X, MousePosition.Y));
+                world.AddFish(new FishAdult(g, MousePosition.X, MousePosition.Y));
                 BackgroundImage = bmp;
                 fishFlag = false;
             }
+            if (snailFlag && y > 630)
+            {
+                g.DrawImage(Image.FromFile("background.png"), 0, 0);
+                world.AddSnail(new Snail(g, MousePosition.X, MousePosition.Y));
+                BackgroundImage = bmp;
+                snailFlag = false;
+            }
+            else
+                snail--;
+            
             
         }
 
@@ -65,21 +76,46 @@ namespace Aquarium2
             g = Graphics.FromImage(bmp);
             g.DrawImage(Image.FromFile("background.png"), 0, 0);
             BackgroundImage = bmp;
-            world = new Aquarium();
+            world = new BL.Aquarium();
             timer1.Enabled = true;
             включитьАквариумToolStripMenuItem.Enabled = false;
-            добавитьРыбуToolStripMenuItem.Enabled = true;
+            добавитьToolStripMenuItem.Enabled = true;
             draw = new Drawing();
 
         }
 
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void улиткуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+  
+                snailFlag = true;
+                snail++;
+               // улиткуToolStripMenuItem.Text = "Улитку " + snail.ToString() + "/4";
+                if (snail == 4)
+                {
+                    улиткуToolStripMenuItem.Text = "Больше нельзя ;(";
+                    улиткуToolStripMenuItem.Enabled = false;
+                }
+                if (snail == 1)
+                    timer2.Enabled = true;
+           
+        }
+    
+
+
         private void timer2_Tick(object sender, EventArgs e)
         {
             world.AllFish.SlowDie();
+            world.AllSnail.SlowDie();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            world.AllSnail.Move();
             world.AllFish.Move();
             world.FallFood();
             BackgroundImage = draw.DrawAll(world);

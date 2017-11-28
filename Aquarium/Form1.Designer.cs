@@ -33,11 +33,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.действияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.включитьАквариумToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.добавитьРыбуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.рыбуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.улиткуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.рыбуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.улиткуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +57,7 @@
             // 
             this.действияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.включитьАквариумToolStripMenuItem,
-            this.добавитьРыбуToolStripMenuItem});
+            this.добавитьToolStripMenuItem});
             this.действияToolStripMenuItem.Name = "действияToolStripMenuItem";
             this.действияToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.действияToolStripMenuItem.Text = "Действия";
@@ -69,30 +69,15 @@
             this.включитьАквариумToolStripMenuItem.Text = "Включить аквариум";
             this.включитьАквариумToolStripMenuItem.Click += new System.EventHandler(this.включитьАквариумToolStripMenuItem_Click);
             // 
-            // добавитьРыбуToolStripMenuItem
+            // добавитьToolStripMenuItem
             // 
-            this.добавитьРыбуToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.добавитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.рыбуToolStripMenuItem,
             this.улиткуToolStripMenuItem});
-            this.добавитьРыбуToolStripMenuItem.Enabled = false;
-            this.добавитьРыбуToolStripMenuItem.Name = "добавитьРыбуToolStripMenuItem";
-            this.добавитьРыбуToolStripMenuItem.Size = new System.Drawing.Size(222, 26);
-            this.добавитьРыбуToolStripMenuItem.Text = "Добавить";
-            // 
-            // рыбуToolStripMenuItem
-            // 
-            this.рыбуToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("рыбуToolStripMenuItem.Image")));
-            this.рыбуToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.рыбуToolStripMenuItem.Name = "рыбуToolStripMenuItem";
-            this.рыбуToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
-            this.рыбуToolStripMenuItem.Text = "Рыбу";
-            this.рыбуToolStripMenuItem.Click += new System.EventHandler(this.рыбуToolStripMenuItem_Click);
-            // 
-            // улиткуToolStripMenuItem
-            // 
-            this.улиткуToolStripMenuItem.Name = "улиткуToolStripMenuItem";
-            this.улиткуToolStripMenuItem.Size = new System.Drawing.Size(130, 26);
-            this.улиткуToolStripMenuItem.Text = "Улитку";
+            this.добавитьToolStripMenuItem.Enabled = false;
+            this.добавитьToolStripMenuItem.Name = "добавитьToolStripMenuItem";
+            this.добавитьToolStripMenuItem.Size = new System.Drawing.Size(222, 26);
+            this.добавитьToolStripMenuItem.Text = "Добавить";
             // 
             // timer1
             // 
@@ -103,6 +88,23 @@
             // 
             this.timer2.Interval = 50;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // рыбуToolStripMenuItem
+            // 
+            this.рыбуToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("рыбуToolStripMenuItem.Image")));
+            this.рыбуToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.рыбуToolStripMenuItem.Name = "рыбуToolStripMenuItem";
+            this.рыбуToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.рыбуToolStripMenuItem.Text = "Рыбу";
+            this.рыбуToolStripMenuItem.Click += new System.EventHandler(this.рыбуToolStripMenuItem_Click);
+            // 
+            // улиткуToolStripMenuItem
+            // 
+            this.улиткуToolStripMenuItem.Image = global::Aquarium.Properties.Resources.snail1;
+            this.улиткуToolStripMenuItem.Name = "улиткуToolStripMenuItem";
+            this.улиткуToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.улиткуToolStripMenuItem.Text = "Улитку";
+            this.улиткуToolStripMenuItem.Click += new System.EventHandler(this.улиткуToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -128,7 +130,7 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem действияToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem добавитьРыбуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem рыбуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem улиткуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem включитьАквариумToolStripMenuItem;

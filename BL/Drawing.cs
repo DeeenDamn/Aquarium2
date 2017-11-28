@@ -15,15 +15,24 @@ namespace BL
         Image leftfish = Image.FromFile("fish.png");
         Image rightfish = Image.FromFile("fish.png");
         Image back = Image.FromFile("background.png");
-        Image leftdie = Image.FromFile("fish.png");
-        Image rightdie = Image.FromFile("fish.png");
+        Image leftdiefish = Image.FromFile("fish.png");
+        Image rightdiefish = Image.FromFile("fish.png");
+        Image leftdiesnail = Image.FromFile("snail.png");
+        Image rightdiesnail = Image.FromFile("snail.png");
+        Image leftsnail = Image.FromFile("snail.png"); //
+        Image rightsnail = Image.FromFile("snail.png"); //
+
 
         public Drawing()
         {
             rightfish.RotateFlip(RotateFlipType.RotateNoneFlipX);
-            rightdie.RotateFlip(RotateFlipType.RotateNoneFlipX);
-            rightdie.RotateFlip(RotateFlipType.RotateNoneFlipXY);
-            leftdie.RotateFlip(RotateFlipType.RotateNoneFlipXY);
+            rightdiefish.RotateFlip(RotateFlipType.RotateNoneFlipX);
+            rightdiefish.RotateFlip(RotateFlipType.RotateNoneFlipXY);
+            leftdiefish.RotateFlip(RotateFlipType.RotateNoneFlipXY);
+            rightsnail.RotateFlip(RotateFlipType.RotateNoneFlipX);
+            rightdiesnail.RotateFlip(RotateFlipType.RotateNoneFlipX);
+            rightdiesnail.RotateFlip(RotateFlipType.RotateNoneFlipXY);
+            leftdiesnail.RotateFlip(RotateFlipType.RotateNoneFlipY);
         }
 
         public Bitmap DrawAll(Aquarium sea)
@@ -31,14 +40,15 @@ namespace BL
             bmp.Dispose();
             bmp = new Bitmap(back);
             g = Graphics.FromImage(bmp);
-            DrawMove(sea.AllFish);
+            DrawMoveFish(sea.AllFish);
+            DrawMoveSnail(sea.AllSnail); //////////
             if (sea.Ohapka.Count != 0)
                 DrawFood(sea.Ohapka);
             return bmp;
 
         }
 
-        private void DrawMove(ListOfAquaPeople swimmers)
+        private void DrawMoveFish(ListOfAquaPeople swimmers)
         {
             
             for (int i = 0; i < swimmers.residents.Count; i++)
@@ -58,7 +68,8 @@ namespace BL
                     }
                     else
                     {
-                        g.DrawImage(rightdie, swimmers.residents.ElementAt(i).X, swimmers.residents.ElementAt(i).Y, swimmers.residents.ElementAt(i).Width, swimmers.residents.ElementAt(i).Height);
+                        
+                        g.DrawImage(rightdiefish, swimmers.residents.ElementAt(i).X, swimmers.residents.ElementAt(i).Y, swimmers.residents.ElementAt(i).Width, swimmers.residents.ElementAt(i).Height);
                     }
 
                 }
@@ -70,12 +81,53 @@ namespace BL
                     }
                     else
                     {
-                        g.DrawImage(leftdie, swimmers.residents.ElementAt(i).X, swimmers.residents.ElementAt(i).Y, swimmers.residents.ElementAt(i).Width, swimmers.residents.ElementAt(i).Height);
+                        ///
+                        g.DrawImage(leftdiefish, swimmers.residents.ElementAt(i).X, swimmers.residents.ElementAt(i).Y, swimmers.residents.ElementAt(i).Width, swimmers.residents.ElementAt(i).Height);
                     }
                 }
                 DrawHealth(swimmers.residents.ElementAt(i).lifeRec, swimmers.residents.ElementAt(i).health);
             }
         }
+        private void DrawMoveSnail(ListOfAquaPeople swimmers)
+        {
+
+            for (int i = 0; i < swimmers.residents.Count; i++)
+            {
+                if (swimmers.residents.ElementAt(i).Death)
+                {
+                    g.DrawImage(Image.FromFile("death.png"), swimmers.residents.ElementAt(i).X, swimmers.residents.ElementAt(i).Y, 150, 150);
+                    swimmers.residents.RemoveAt(i);
+                    continue;
+                }
+                if (swimmers.residents.ElementAt(i).turn)
+                {
+                    if (swimmers.residents.ElementAt(i).health != 0)
+                    {
+                        g.DrawImage(rightsnail, swimmers.residents.ElementAt(i).X, swimmers.residents.ElementAt(i).Y, swimmers.residents.ElementAt(i).Width, swimmers.residents.ElementAt(i).Height);
+                        swimmers.residents.ElementAt(i).turn = false;
+                    }
+                    else
+                    {
+
+                        g.DrawImage(leftdiesnail, swimmers.residents.ElementAt(i).X, swimmers.residents.ElementAt(i).Y, swimmers.residents.ElementAt(i).Width, swimmers.residents.ElementAt(i).Height);
+                    }
+
+                }
+                else
+                {
+                    if (swimmers.residents.ElementAt(i).health != 0)
+                    {
+                        g.DrawImage(leftsnail, swimmers.residents.ElementAt(i).X, swimmers.residents.ElementAt(i).Y, 150, 95);
+                    }
+                    else
+                    {
+                        g.DrawImage(leftdiesnail, swimmers.residents.ElementAt(i).X, swimmers.residents.ElementAt(i).Y, swimmers.residents.ElementAt(i).Width, swimmers.residents.ElementAt(i).Height);
+                    }
+                }
+                DrawHealth(swimmers.residents.ElementAt(i).lifeRec, swimmers.residents.ElementAt(i).health);
+            }
+        }
+
 
         private void DrawHealth(Rectangle rec, int health)
         {

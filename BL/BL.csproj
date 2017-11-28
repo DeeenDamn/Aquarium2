@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Aquarium.cs" />
+    <Compile Include="Creators\SnailCreator.cs" />
     <Compile Include="Drawing.cs" />
     <Compile Include="Creators\ICreator.cs" />
     <Compile Include="Fish\FishAdult.cs" />

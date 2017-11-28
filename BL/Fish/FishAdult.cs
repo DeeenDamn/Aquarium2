@@ -26,6 +26,7 @@ namespace BL
 
         public override void Move()
         {
+
             int dx = TrgX - x;
             int dy = TrgY - y;
             int stepX = 10;
